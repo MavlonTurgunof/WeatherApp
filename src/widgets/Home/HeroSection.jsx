@@ -18,7 +18,7 @@ export default function HeroSection({ data }) {
   return (
     <div>
       <div
-        className="relative  w-full md:h-[calc(100dvh-75.6px)] h-[calc(100dvh-170.6px)] md:p-2 p-[2px] rounded-2xl"
+        className="relative  w-full md:h-[calc(100dvh-75.6px)] h-[690px] md:p-2 p-[2px] rounded-2xl"
         style={{
           backgroundImage: BackgroundImage(data?.weather[0].main),
           backgroundSize: "cover",
