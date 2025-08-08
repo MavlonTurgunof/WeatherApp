@@ -20,23 +20,27 @@ function ForecastCard({ dayData }) {
   } = dayData;
 
   return (
-    <div className="border-2 border-primary p-6 rounded-xl text-black shadow-md">
-      <div className="flex items-start justify-between">
-        <div className="flex items-center mb-2 border-r-2 border-primary pr-4">
-          <img src={icon} alt={date} className="w-40 h-40" />
+    <div className="border-2 border-primary md:p-6 p-4 rounded-xl text-black dark:text-white shadow-md">
+      <div className="flex md:flex-row flex-col items-start justify-between">
+        <div className="flex md:items-center mb-2 md:border-r-2 md:border-primary md:pr-4">
+          <img src={icon} alt={date} className="md:w-40 md:h-40 w-25 h-25" />
           <div>
-            <h3 className="text-[30px] font-semibold">{day}</h3>
+            <h3 className="md:text-[30px] text-[20px] font-semibold">{date}</h3>
             <div className="flex items-baseline">
-              <p className="text-[60px] font-semibold">{temp}°C</p>
-              <p className="text-[20px] font-semibold">
+              <p className="md:text-[60px] text-[40px] font-semibold">
+                {temp}°C
+              </p>
+              <p className="md:text-[20px] text-[13px] font-semibold">
                 / Feels like: {feelsLike}°C
               </p>
             </div>
-            <p className="capitalize font-medium text-[20px]">{description}</p>
+            <p className="capitalize font-medium md:text-[20px] text-[15px]">
+              {description}
+            </p>
           </div>
         </div>
 
-        <div className="flex flex-col gap-6 text-[20px] font-bold">
+        <div className="flex flex-col gap-6 md:text-[20px] text-[15px] font-bold">
           <div className="flex items-center gap-4">
             <TbMathMaxMin size={30} />
             <p className="font-normal">Min/Max:</p>
@@ -56,7 +60,7 @@ function ForecastCard({ dayData }) {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 text-primary text-[20px]">
+        <div className="flex items-center gap-2 text-primary text-[20px] max-md:mt-5">
           <LuDroplets />
           <p>Humidity: {humidity}%</p>
         </div>

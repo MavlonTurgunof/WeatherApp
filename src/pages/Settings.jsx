@@ -1,7 +1,12 @@
 import React from "react";
+import SettingsBlock from "../widgets/Settings/SettingsBlock";
 
 function Settings() {
-  return <div>Settings</div>;
+  return (
+    <>
+      <SettingsBlock />
+    </>
+  );
 }
 
 export default Settings;

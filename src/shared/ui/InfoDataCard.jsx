@@ -1,4 +1,8 @@
 import React from "react";
+import { FiDroplet } from "react-icons/fi";
+import { LiaTemperatureLowSolid } from "react-icons/lia";
+import { LuDroplets } from "react-icons/lu";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
 
 function getIcon(title) {
   if (title === "FEELS LIKE") return <LiaTemperatureLowSolid />;
@@ -13,7 +17,7 @@ function InfoDataCard({ info }) {
       key={info.title}
       className="bg-black/60 p-4 rounded-2xl flex flex-col justify-center"
     >
-      <h1 className="text-[#636c75] flex items-center gap-2 text-[20px]">
+      <h1 className="text-[#636c75] flex items-center gap-2 md:text-[20px] text-[15px]">
         {getIcon(info.title)}
         {info.title}
       </h1>

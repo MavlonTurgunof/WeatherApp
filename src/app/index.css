@@ -3,7 +3,10 @@
 @theme {
   --color-primary: #0ea5e9;
   --color-secondary: #bababa;
+  --color-darkMode: #001832;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 body {
   font-family: "Inter", sans-serif;

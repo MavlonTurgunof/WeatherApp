@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
-import { useWeatherContext } from "../../shared/context/WeatherContext";
+import { useWeatherContext } from "../context/WeatherContext";
 
 function SearchInput() {
   const [value, setValue] = useState("");
@@ -14,15 +14,15 @@ function SearchInput() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="relative">
+    <form onSubmit={handleSubmit} className="relative max-md:px-10">
       <input
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder="Search city..."
-        className="w-[300px] text-secondary py-2 px-2 rounded-[10px] bg-[#f5f5f5]"
+        className="w-[300px] text-gray-500 py-2 px-2 rounded-[10px] bg-[#f5f5f5] outline-none"
       />
-      <div className="absolute top-2 right-2">
+      <div className="absolute max-md:hidden top-2 right-2">
         <HiOutlineSearch size={26} color="#0EA5E9" />
       </div>
     </form>

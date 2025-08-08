@@ -5,6 +5,6 @@ export const axiosInstance = axios.create({
   params: {
     units: "metric",
     lang: "en",
-    appid: "3a9c2075dd1fb88b5c3fe8eae4ba4ecc",
+    appid: import.meta.env.VITE_OPENWEATHER_API_KEY,
   },
 });

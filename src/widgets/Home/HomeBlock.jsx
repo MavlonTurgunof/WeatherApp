@@ -10,48 +10,59 @@ import { useForecastByCoords } from "../../entities/forecast/api";
 import { useCurrentWeatherByCity } from "../../entities/weather/weatherByCity";
 import { useForecastByCity } from "../../entities/forecast/forecastByCity";
 import { useWeatherContext } from "../../shared/context/WeatherContext";
+import LoadingThreeDotsJumping from "../../shared/ui/Motion/LoadingThreeDotsJumping";
+import CityNotFound from "../../shared/ui/CityNotFound";
 
 function HomeBlock() {
-  const { city, clearCity } = useWeatherContext();
+  const { city } = useWeatherContext();
   const { lat, lon, error: geoError } = useGeolocation();
+
   const weatherByCoords = useCurrentWeatherByCoords(lat, lon);
   const forecastByCoords = useForecastByCoords(lat, lon);
+
   const weatherByCity = useCurrentWeatherByCity(city);
   const forecastByCity = useForecastByCity(city);
 
-  const weatherData = city ? weatherByCity.data : weatherByCoords.data;
-  const forecastData = city ? forecastByCity.data : forecastByCoords.data;
+  const isUsingCity = Boolean(city);
 
-  const isLoading = city
+  const weatherData = isUsingCity ? weatherByCity.data : weatherByCoords.data;
+  const forecastData = isUsingCity
+    ? forecastByCity.data
+    : forecastByCoords.data;
+
+  const isLoading = isUsingCity
     ? weatherByCity.isLoading || forecastByCity.isLoading
     : weatherByCoords.isLoading || forecastByCoords.isLoading;
 
-  const error = city
+  const error = isUsingCity
     ? weatherByCity.error || forecastByCity.error
     : geoError || weatherByCoords.error || forecastByCoords.error;
 
-  const handleBackToLocation = () => {
-    clearCity();
-  };
+  if (error) return <CityNotFound />;
+
+  console.log(weatherData);
 
   return (
-    <Container>
-      <div className="my-[5px]">
-        <div className="flex justify-between gap-4">
-          <HeroSection
-            data={weatherData}
-            isLoading={isLoading}
-            error={error}
-            handleBackToLocation={handleBackToLocation}
-          />
-          <div className="flex-1">
-            <Hourly data={forecastData} isLoading={isLoading} error={error} />
-            <Daily data={forecastData} isLoading={isLoading} error={error} />
-            <Sun data={weatherData} isLoading={isLoading} error={error} />
+    <div className="bg-white dark:bg-darkMode">
+      <Container>
+        {isLoading ? (
+          <div className="mt-[300px] h-[calc(100dvh-365.6px)]">
+            <LoadingThreeDotsJumping />
           </div>
-        </div>
-      </div>
-    </Container>
+        ) : (
+          <div className="py-[5px]">
+            <div className="flex md:justify-between md:flex-row flex-col md:gap-4 ">
+              <HeroSection data={weatherData} />
+              <div className="flex-1">
+                <Hourly data={forecastData} />
+                <Daily data={forecastData} />
+                <Sun data={weatherData} />
+              </div>
+            </div>
+          </div>
+        )}
+      </Container>
+    </div>
   );
 }
 

@@ -5,10 +5,12 @@ import { useGeolocation } from "../../shared/hooks/useGeoLocation";
 import { useForecastByCoords } from "../../entities/forecast/api";
 import { useForecastByCity } from "../../entities/forecast/forecastByCity";
 import { useWeatherContext } from "../../shared/context/WeatherContext";
+import LoadingThreeDotsJumping from "../../shared/ui/Motion/LoadingThreeDotsJumping";
+import CityNotFound from "../../shared/ui/CityNotFound";
 
 function DailyForecast() {
   const { city } = useWeatherContext();
-  const { lat, lon, error } = useGeolocation();
+  const { lat, lon, error: geoError } = useGeolocation();
 
   const forecastByCoords = useForecastByCoords(lat, lon);
   const forecastByCity = useForecastByCity(city);
@@ -18,10 +20,13 @@ function DailyForecast() {
     ? forecastByCity.isLoading
     : forecastByCoords.isLoading;
 
-  if (error) return <p className="text-red-500">{error}</p>;
-  if (isLoading || !forecastData) return <p>Loading daily forecast...</p>;
+  const error = city
+    ? forecastByCity.error
+    : geoError || forecastByCoords.error;
 
-  const dailyData = forecastData.list
+  if (error) return <CityNotFound />;
+
+  const dailyData = forecastData?.list
     .filter((item) => item.dt_txt.includes("12:00:00"))
     .slice(0, 5)
     .map((item) => {
@@ -48,18 +53,26 @@ function DailyForecast() {
     });
 
   return (
-    <Container>
-      <div className="my-4">
-        <h1 className="text-[30px] font-bold text-primary">
-          Daily Forecast {city ? `(${city})` : ""}
-        </h1>
-        <div className="flex flex-col gap-4 mt-6">
-          {dailyData.map((day, idx) => (
-            <ForecastCard key={idx} dayData={day} />
-          ))}
-        </div>
-      </div>
-    </Container>
+    <div className="bg-white dark:bg-darkMode">
+      <Container>
+        {isLoading || !forecastData ? (
+          <div className="mt-[300px] h-[calc(100dvh-365.6px)]">
+            <LoadingThreeDotsJumping />
+          </div>
+        ) : (
+          <div className="md:py-4 pb-10">
+            <h1 className="md:text-[30px] text-[25px] font-bold text-primary dark:text-white">
+              Daily Forecast {city ? `(${city})` : ""}
+            </h1>
+            <div className="flex flex-col gap-4 mt-6">
+              {dailyData.map((day, idx) => (
+                <ForecastCard key={idx} dayData={day} />
+              ))}
+            </div>
+          </div>
+        )}
+      </Container>
+    </div>
   );
 }
 

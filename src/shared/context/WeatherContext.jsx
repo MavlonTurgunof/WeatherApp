@@ -1,17 +1,46 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const WeatherContext = createContext();
 
 export function WeatherProvider({ children }) {
   const [city, setCity] = useState(null);
+  const [defaultCity, setDefaultCity] = useState(null);
 
-  const clearCity = () => {
+  useEffect(() => {
+    const savedDefault = localStorage.getItem("defaultCity");
+    if (savedDefault) {
+      setDefaultCity(savedDefault);
+      setCity(savedDefault);
+    }
+  }, []);
+
+  const saveDefaultCity = (cityName) => {
+    localStorage.setItem("defaultCity", cityName);
+    setDefaultCity(cityName);
+    setCity(cityName);
+  };
+
+  const useCurrentLocation = () => {
     setCity(null);
+  };
+
+  const removeDefaultCity = () => {
     localStorage.removeItem("defaultCity");
+    setDefaultCity(null);
+    setCity(null);
   };
 
   return (
-    <WeatherContext.Provider value={{ city, setCity, clearCity }}>
+    <WeatherContext.Provider
+      value={{
+        city,
+        setCity,
+        defaultCity,
+        saveDefaultCity,
+        useCurrentLocation,
+        removeDefaultCity,
+      }}
+    >
       {children}
     </WeatherContext.Provider>
   );
