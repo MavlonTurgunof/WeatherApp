@@ -26,7 +26,7 @@ export default function HeroSection({ data }) {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="m-2 bg-black/30 text-white rounded-2xl md:p-4 p-2 md:h-[calc(100dvh-101.6px)] h-[calc(100dvh-190.6px)]">
+        <div className="m-2 bg-black/30 text-white rounded-2xl md:p-4 p-2 md:h-[calc(100dvh-101.6px)] h-[670px]">
           <div className="flex justify-between items-start">
             <div>
               <div className="flex items-center gap-2 mb-2">
@@ -55,7 +55,7 @@ export default function HeroSection({ data }) {
             <p className="text-[18px]">{data?.weather[0].description}</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-2 md:mt-[100px] mt-[20px]">
+          <div className="grid grid-cols-2 gap-2 md:mt-[100px] mt-[60px]">
             {infoData.map((info) => (
               <InfoDataCard info={info} key={info.title} />
             ))}
