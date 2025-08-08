@@ -64,7 +64,7 @@ function HomeBlock() {
           <div className="py-[5px] ">
             <div className="flex md:justify-between md:flex-row flex-col md:gap-4 ">
               <HeroSection data={weatherData} />
-              <div className="flex-1">
+              <div className="flex-1 max-md:pt-4">
                 <Hourly data={forecastData} />
                 <Daily data={forecastData} />
                 <Sun data={weatherData} />
