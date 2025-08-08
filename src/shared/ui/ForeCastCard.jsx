@@ -6,7 +6,6 @@ import { TbMathMaxMin } from "react-icons/tb";
 
 function ForecastCard({ dayData }) {
   const {
-    day,
     date,
     temp,
     icon,
