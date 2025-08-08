@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "../../shared/ui/Container";
 import ForecastCard from "../../shared/ui/ForeCastCard";
-import { useGeolocation } from "../../shared/hooks/useGeoLocation";
+import { useGeolocation } from "../../shared/hooks/useGeolocation";
 import { useForecastByCoords } from "../../entities/forecast/api";
 import { useForecastByCity } from "../../entities/forecast/forecastByCity";
 import { useWeatherContext } from "../../shared/context/WeatherContext";

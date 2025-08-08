@@ -12,7 +12,7 @@ import { useForecastByCity } from "../../entities/forecast/forecastByCity";
 import { useWeatherContext } from "../../shared/context/WeatherContext";
 import LoadingThreeDotsJumping from "../../shared/ui/Motion/LoadingThreeDotsJumping";
 import CityNotFound from "../../shared/ui/CityNotFound";
-import { useGeolocation } from "../../shared/hooks/useGeolocation.js";
+import { useGeolocation } from "../../shared/hooks/useGeolocation";
 
 function HomeBlock() {
   const { city } = useWeatherContext();
