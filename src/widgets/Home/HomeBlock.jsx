@@ -37,11 +37,20 @@ function HomeBlock() {
 
   const error = isUsingCity
     ? weatherByCity.error || forecastByCity.error
-    : geoError || weatherByCoords.error || forecastByCoords.error;
+    : weatherByCoords.error || forecastByCoords.error;
 
   if (error) return <CityNotFound />;
 
   console.log(weatherData);
+
+  if (geoError && !city) {
+    return (
+      <div className="text-center mt-10 text-red-500 md:text-[30px] text-[15px]">
+        We couldn’t detect your location. Please enable location or search for a
+        city.
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white dark:bg-darkMode">

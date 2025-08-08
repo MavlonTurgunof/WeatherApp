@@ -20,11 +20,17 @@ function DailyForecast() {
     ? forecastByCity.isLoading
     : forecastByCoords.isLoading;
 
-  const error = city
-    ? forecastByCity.error
-    : geoError || forecastByCoords.error;
+  const error = city ? forecastByCity.error : forecastByCoords.error;
 
   if (error) return <CityNotFound />;
+  if (geoError && !city) {
+    return (
+      <div className="text-center mt-10 text-red-500 md:text-[30px] text-[15px]">
+        We couldn’t detect your location. Please enable location or search for a
+        city.
+      </div>
+    );
+  }
 
   const dailyData = forecastData?.list
     .filter((item) => item.dt_txt.includes("12:00:00"))
