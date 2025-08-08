@@ -51,7 +51,7 @@ function DailyForecast() {
     });
 
   return (
-    <div className="bg-white dark:bg-darkMode">
+    <div className="bg-white dark:bg-darkMode max-md:px-2">
       <Container>
         {isLoading || !forecastData ? (
           <div className="mt-[300px] h-[calc(100dvh-365.6px)]">

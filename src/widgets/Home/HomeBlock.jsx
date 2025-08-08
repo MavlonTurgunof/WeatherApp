@@ -54,14 +54,14 @@ function HomeBlock() {
     );
   }
   return (
-    <div className="bg-white dark:bg-darkMode">
+    <div className="bg-white dark:bg-darkMode max-md:px-2 ">
       <Container>
         {isLoading ? (
           <div className="mt-[300px] h-[calc(100dvh-365.6px)]">
             <LoadingThreeDotsJumping />
           </div>
         ) : (
-          <div className="py-[5px]">
+          <div className="py-[5px] ">
             <div className="flex md:justify-between md:flex-row flex-col md:gap-4 ">
               <HeroSection data={weatherData} />
               <div className="flex-1">

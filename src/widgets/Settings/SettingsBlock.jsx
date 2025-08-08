@@ -6,7 +6,7 @@ import LoadingThreeDotsJumping from "../../shared/ui/Motion/LoadingThreeDotsJump
 
 function SettingsBlock() {
   return (
-    <div className="bg-white dark:bg-darkMode  pt-10 h-[calc(100dvh-65.6px)]">
+    <div className="bg-white dark:bg-darkMode  pt-10 h-[calc(100dvh-65.6px)] max-md:px-2">
       <Container>
         <div className="flex flex-col items-center justify-center md:p-10 md:bg-primary/10 md:rounded-2xl md:mx-40">
           <ThemeToggle />
