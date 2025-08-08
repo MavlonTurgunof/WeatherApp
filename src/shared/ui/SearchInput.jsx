@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { useWeatherContext } from "../context/WeatherContext";
+import { useNavigate } from "react-router-dom";
 
 function SearchInput() {
   const [value, setValue] = useState("");
   const { setCity } = useWeatherContext();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!value.trim()) return;
     setCity(value.trim());
     setValue("");
+    navigate("/home");
   };
 
   return (
