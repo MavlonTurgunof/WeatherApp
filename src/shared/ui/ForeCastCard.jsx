@@ -3,6 +3,7 @@
 import { FiDroplet } from "react-icons/fi";
 import { LuDroplets, LuWind } from "react-icons/lu";
 import { TbMathMaxMin } from "react-icons/tb";
+import { formatTemp } from "../lib/helper";
 
 function ForecastCard({ dayData }) {
   const {
@@ -27,10 +28,10 @@ function ForecastCard({ dayData }) {
             <h3 className="md:text-[30px] text-[20px] font-semibold">{date}</h3>
             <div className="flex items-baseline">
               <p className="md:text-[60px] text-[40px] font-semibold">
-                {temp}°C
+                {formatTemp(temp)}
               </p>
               <p className="md:text-[20px] text-[13px] font-semibold">
-                / Feels like: {feelsLike}°C
+                / Feels like: {formatTemp(feelsLike)}
               </p>
             </div>
             <p className="capitalize font-medium md:text-[20px] text-[15px]">
@@ -44,7 +45,7 @@ function ForecastCard({ dayData }) {
             <TbMathMaxMin size={30} />
             <p className="font-normal">Min/Max:</p>
             <p>
-              {min}° / {max}°
+              {formatTemp(min)} / {formatTemp(max)}
             </p>
           </div>
           <div className="flex items-center gap-4">

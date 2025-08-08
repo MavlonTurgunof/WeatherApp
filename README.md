@@ -1,12 +1,63 @@
-# React + Vite
+#Loyiha nomi - Windy (Weather forecast app)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+##Xususiyatlari
 
-Currently, two official plugins are available:
+1. Hozirgi joy manzil kardinatalarini aniqlash - manzilning kordinatalarini avtomatik aniqlab shu joyning ayni vaqtdagi havo malumotlari aniqlanadi.
+2. Standart (Default) shaharni tanlash
+3. Hozirgi manzilga qaytish
+4. Shaharlar boyicha qidiruv
+5. Light/Dark Modelar
+6. Soatga kora temparatura jadvali
+7. Unit va component testlar
+8. 5 kunlik havo pragnozlari
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##Tech Stack
 
-## Expanding the ESLint configuration
+### **Frontend**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [React 19](https://react.dev/) – UI Library
+- [React Router 7](https://reactrouter.com/) – Routing
+- [Tailwind CSS 4](https://tailwindcss.com/) – Styling
+- [Framer Motion](https://www.framer.com/motion/) – Animations
+- [React Icons](https://react-icons.github.io/react-icons/) – Icons
+
+### **Data Fetching**
+
+- [React Query](https://tanstack.com/query/latest) – Server state management
+- [Axios](https://axios-http.com/) – API requests
+
+### **Charts**
+
+- [Recharts](https://recharts.org/en-US/) – Weather data charts
+
+### **Testing**
+
+- [Vitest](https://vitest.dev/) – Test runner
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) – Component testing
+- [Jest DOM](https://github.com/testing-library/jest-dom) – Custom matchers
+
+##Loyihani ornatish
+
+Loyihani klonlash va ornatish
+
+```bash
+git clone https://github.com/MavlonTurgunof/WeatherApp.git
+cd weatherapp
+npm install
+
+##Loyihani ishga tushurish
+npm run dev
+
+##Production build
+
+npm run build
+npm run preview
+
+##Test funksyalarni ishga tushurish
+
+npm run test
+```
+
+Author: Mavlonbek Turgunov
+📧 Email: mavlondev2023@gmail.com
+🔗 LinkedIn:https://www.linkedin.com/in/mavlon-turgunov-62602b2b9/

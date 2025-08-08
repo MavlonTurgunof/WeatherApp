@@ -7,6 +7,7 @@ import { useForecastByCity } from "../../entities/forecast/forecastByCity";
 import { useWeatherContext } from "../../shared/context/WeatherContext";
 import LoadingThreeDotsJumping from "../../shared/ui/Motion/LoadingThreeDotsJumping";
 import CityNotFound from "../../shared/ui/CityNotFound";
+import { formatDate } from "../../shared/lib/helper";
 
 function DailyForecast() {
   const { city } = useWeatherContext();
@@ -39,11 +40,7 @@ function DailyForecast() {
     .slice(0, 5)
     .map((item) => {
       const date = new Date(item.dt * 1000);
-      const dateStr = date.toLocaleDateString("en-US", {
-        weekday: "long",
-        month: "short",
-        day: "numeric",
-      });
+      const dateStr = formatDate(date);
 
       return {
         day: date.toLocaleDateString("en-US", { weekday: "short" }),

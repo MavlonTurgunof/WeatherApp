@@ -33,8 +33,10 @@ function AddingNewCity() {
         </button>
       </form>
       {defaultCity && (
-        <div className="flex items-center gap-4 bg-white rounded-[10px] w-fit p-2 md:ml-45">
-          <p className="text-lg text-black  font-bold">{defaultCity}</p>
+        <div className="flex items-center gap-4 bg-white rounded-[10px] w-fit p-2">
+          <p className="text-lg text-black font-bold">
+            Current default city: {defaultCity}
+          </p>
           <button
             onClick={removeDefaultCity}
             className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600"
