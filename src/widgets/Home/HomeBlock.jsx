@@ -4,7 +4,7 @@ import HeroSection from "./HeroSection";
 import Hourly from "./Hourly";
 import Daily from "./Daily";
 import Sun from "./Sun";
-import { useGeolocation } from "../../shared/hooks/useGeoLocation";
+
 import { useCurrentWeatherByCoords } from "../../entities/weather/api";
 import { useForecastByCoords } from "../../entities/forecast/api";
 import { useCurrentWeatherByCity } from "../../entities/weather/weatherByCity";
@@ -12,6 +12,7 @@ import { useForecastByCity } from "../../entities/forecast/forecastByCity";
 import { useWeatherContext } from "../../shared/context/WeatherContext";
 import LoadingThreeDotsJumping from "../../shared/ui/Motion/LoadingThreeDotsJumping";
 import CityNotFound from "../../shared/ui/CityNotFound";
+import { useGeolocation } from "../../shared/hooks/useGeoLocation";
 
 function HomeBlock() {
   const { city } = useWeatherContext();
