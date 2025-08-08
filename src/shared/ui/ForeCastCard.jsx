@@ -1,5 +1,3 @@
-// ForecastCard.jsx
-
 import { FiDroplet } from "react-icons/fi";
 import { LuDroplets, LuWind } from "react-icons/lu";
 import { TbMathMaxMin } from "react-icons/tb";

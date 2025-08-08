@@ -33,7 +33,7 @@ describe("WeatherContext", () => {
     });
 
     expect(result.current.city).toBe(null);
-    expect(result.current.defaultCity).toBe("Tashkent"); // still saved
+    expect(result.current.defaultCity).toBe("Tashkent");
   });
 
   it("removes default city from context and localStorage", () => {

@@ -8,6 +8,7 @@ import { useWeatherContext } from "../../shared/context/WeatherContext";
 import LoadingThreeDotsJumping from "../../shared/ui/Motion/LoadingThreeDotsJumping";
 import CityNotFound from "../../shared/ui/CityNotFound";
 import { formatDate } from "../../shared/lib/helper";
+import ErorWithLocation from "../../shared/ui/ErorWithLocation";
 
 function DailyForecast() {
   const { city } = useWeatherContext();
@@ -25,14 +26,7 @@ function DailyForecast() {
 
   if (error) return <CityNotFound />;
   if (geoError && !city) {
-    return (
-      <div className="bg-white dark:bg-darkMode text-center pt-10 h-[calc(100dvh-65.6px)] text-red-500 md:text-[30px] text-[15px]">
-        <h1>
-          We couldn’t detect your location. Please enable location or search for
-          a city.
-        </h1>
-      </div>
-    );
+    <ErorWithLocation />;
   }
 
   const dailyData = forecastData?.list
@@ -43,7 +37,6 @@ function DailyForecast() {
       const dateStr = formatDate(date);
 
       return {
-        day: date.toLocaleDateString("en-US", { weekday: "short" }),
         date: dateStr,
         temp: Math.round(item.main.temp),
         icon: `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`,

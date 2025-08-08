@@ -1,9 +1,6 @@
 import React from "react";
-import { FiDroplet } from "react-icons/fi";
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import { LiaTemperatureLowSolid } from "react-icons/lia";
-import { LuDroplets } from "react-icons/lu";
-import { MdMyLocation, MdOutlineRemoveRedEye } from "react-icons/md";
+import { MdMyLocation } from "react-icons/md";
 import InfoDataCard from "../../shared/ui/InfoDataCard";
 import { BackgroundImage } from "../../shared/lib/helper";
 import { useWeatherContext } from "../../shared/context/WeatherContext";
@@ -60,7 +57,7 @@ export default function HeroSection({ data }) {
 
           <div className="grid grid-cols-2 gap-2 md:mt-[100px] mt-[20px]">
             {infoData.map((info) => (
-              <InfoDataCard info={info} />
+              <InfoDataCard info={info} key={info.title} />
             ))}
           </div>
         </div>
