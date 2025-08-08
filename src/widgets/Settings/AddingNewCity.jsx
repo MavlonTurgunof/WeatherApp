@@ -1,22 +1,26 @@
 import React, { useState } from "react";
 import { useWeatherContext } from "../../shared/context/WeatherContext";
+import Button from "../../shared/ui/Button";
 
 function AddingNewCity() {
   const [value, setValue] = useState("");
   const { saveDefaultCity, defaultCity, removeDefaultCity } =
     useWeatherContext();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!value.trim()) return;
+    saveDefaultCity(value.trim());
+    setValue("");
+  };
+
   return (
     <div className="flex flex-col gap-4 mt-6">
       <form
-        onSubmit={() => {
-          if (!value.trim()) return;
-          saveDefaultCity(value.trim());
-          setValue("");
-        }}
+        onSubmit={handleSubmit}
         className="flex md:flex-row flex-col items-center gap-6"
       >
-        <h1 className="text-black dark:text-white text-[20px] font-bold">
+        <h1 className="text-black dark:text-white text-[20px] font-bold whitespace-nowrap">
           Add Default City
         </h1>
         <input
@@ -25,24 +29,19 @@ function AddingNewCity() {
           className="px-3 py-2 bg-gray-100 border-2 border-primary rounded-2xl"
           placeholder="Add city..."
         />
-        <button
-          type="submit"
-          className="px-4 py-2 bg-primary rounded-2xl text-white max-md:w-full"
-        >
+        <Button type="submit" variant="primary" fullWidth>
           Save
-        </button>
+        </Button>
       </form>
+
       {defaultCity && (
         <div className="flex items-center gap-4 bg-white rounded-[10px] w-fit p-2">
           <p className="text-lg text-black font-bold">
             Current default city: {defaultCity}
           </p>
-          <button
-            onClick={removeDefaultCity}
-            className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600"
-          >
+          <Button onClick={removeDefaultCity} variant="danger">
             Delete
-          </button>
+          </Button>
         </div>
       )}
     </div>

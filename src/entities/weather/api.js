@@ -10,6 +10,6 @@ export function useCurrentWeatherByCoords(lat, lon) {
       });
       return data;
     },
-    enabled: !!lat && !!lon, // Don't run until we have coordinates
+    enabled: !!lat && !!lon,
   });
 }
