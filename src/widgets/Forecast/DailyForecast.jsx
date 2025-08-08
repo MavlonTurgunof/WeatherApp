@@ -25,9 +25,11 @@ function DailyForecast() {
   if (error) return <CityNotFound />;
   if (geoError && !city) {
     return (
-      <div className="text-center mt-10 text-red-500 md:text-[30px] text-[15px]">
-        We couldn’t detect your location. Please enable location or search for a
-        city.
+      <div className="bg-white dark:bg-darkMode text-center pt-10 h-[calc(100dvh-65.6px)] text-red-500 md:text-[30px] text-[15px]">
+        <h1>
+          We couldn’t detect your location. Please enable location or search for
+          a city.
+        </h1>
       </div>
     );
   }
